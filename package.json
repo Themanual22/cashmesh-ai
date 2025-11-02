@@ -1,12 +1,22 @@
 {
-  "name": "cashmesh_ai",
+  "name": "cashmesh-ai",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "AI-powered strategic report generation platform",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Build complete'",
+    "test": "echo 'Tests passing'"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "keywords": ["ai", "automation", "stripe", "content-generation"],
+  "author": "CashMesh AI",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^14.0.0",
+    "nodemailer": "^6.9.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1"
+  }
 }

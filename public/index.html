@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CashMesh AI - Strategic AI Automation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #e0e0e0;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 153, 255, 0.1) 100%);
+      border-radius: 12px;
+      margin-bottom: 60px;
+      border: 1px solid rgba(0, 212, 255, 0.2);
+    }
+
+    h1 {
+      font-size: 3.5em;
+      background: linear-gradient(135deg, #00d4ff, #0099ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      font-size: 1.3em;
+      color: #b0b0b0;
+      margin-bottom: 30px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+
+    .feature {
+      background: rgba(0, 212, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      padding: 30px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .feature:hover {
+      background: rgba(0, 212, 255, 0.1);
+      border-color: rgba(0, 212, 255, 0.4);
+      transform: translateY(-5px);
+    }
+
+    .feature h3 {
+      color: #00d4ff;
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    .feature p {
+      color: #a0a0a0;
+      font-size: 0.95em;
+    }
+
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+
+    .price-card {
+      background: rgba(0, 212, 255, 0.05);
+      border: 2px solid rgba(0, 212, 255, 0.2);
+      padding: 40px 30px;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .price-card:hover {
+      border-color: rgba(0, 212, 255, 0.6);
+      background: rgba(0, 212, 255, 0.1);
+      transform: scale(1.05);
+    }
+
+    .price-card.featured {
+      border-color: #00d4ff;
+      background: rgba(0, 212, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+    .price-card h3 {
+      color: #00d4ff;
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 2.5em;
+      color: #00d4ff;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .price-features {
+      text-align: left;
+      margin: 30px 0;
+      font-size: 0.9em;
+      color: #a0a0a0;
+    }
+
+    .price-features li {
+      list-style: none;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    }
+
+    .price-features li:before {
+      content: "✓ ";
+      color: #00d4ff;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .form-section {
+      background: rgba(0, 212, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      padding: 50px;
+      border-radius: 12px;
+      margin: 60px 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .form-section h2 {
+      color: #00d4ff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #00d4ff;
+      font-weight: 500;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 212, 255, 0.3);
+      color: #e0e0e0;
+      border-radius: 6px;
+      font-size: 1em;
+      font-family: inherit;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #00d4ff;
+      background: rgba(0, 212, 255, 0.1);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #00d4ff, #0099ff);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .error {
+      color: #ff6b6b;
+      padding: 12px;
+      background: rgba(255, 107, 107, 0.1);
+      border: 1px solid rgba(255, 107, 107, 0.3);
+      border-radius: 6px;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    .success {
+      color: #51cf66;
+      padding: 12px;
+      background: rgba(81, 207, 102, 0.1);
+      border: 1px solid rgba(81, 207, 102, 0.3);
+      border-radius: 6px;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #606060;
+      border-top: 1px solid rgba(0, 212, 255, 0.1);
+      margin-top: 60px;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      color: #00d4ff;
+    }
+
+    .spinner {
+      border: 3px solid rgba(0, 212, 255, 0.2);
+      border-top: 3px solid #00d4ff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 10px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+      .form-section {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>CashMesh AI</h1>
+      <p class="subtitle">Strategic AI Automation Delivered in Hours</p>
+      <p>Submit your business challenge. Get a comprehensive AI-powered strategic report within 2 hours.</p>
+    </header>
+
+    <section class="features">
+      <div class="feature">
+        <h3>🧠 AI-Powered Analysis</h3>
+        <p>Advanced neural networks analyze your business challenge and deliver actionable insights.</p>
+      </div>
+      <div class="feature">
+        <h3>⚡ Lightning-Fast Delivery</h3>
+        <p>Receive your complete strategic report within 2 hours of payment.</p>
+      </div>
+      <div class="feature">
+        <h3>🎯 Fully Customized</h3>
+        <p>Every report is tailored to your specific business needs and market conditions.</p>
+      </div>
+    </section>
+
+    <section class="pricing">
+      <div class="price-card">
+        <h3>Standard</h3>
+        <div class="price">$49</div>
+        <p>Perfect for getting started</p>
+        <ul class="price-features">
+          <li>Strategic Analysis</li>
+          <li>Market Insights</li>
+          <li>Recommendations</li>
+          <li>2-hour Delivery</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <h3>Premium</h3>
+        <div class="price">$149</div>
+        <p>Most popular choice</p>
+        <ul class="price-features">
+          <li>Everything in Standard</li>
+          <li>Implementation Roadmap</li>
+          <li>Risk Analysis</li>
+          <li>Priority Support</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <h3>Enterprise</h3>
+        <div class="price">$499</div>
+        <p>Complete solution</p>
+        <ul class="price-features">
+          <li>Everything in Premium</li>
+          <li>Video Walkthrough</li>
+          <li>Quarterly Reviews</li>
+          <li>Dedicated Support</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h2>Get Your Report</h2>
+      <form id="paymentForm">
+        <div class="error" id="errorMessage"></div>
+        <div class="success" id="successMessage"></div>
+
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Your name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="topic">Business Topic / Challenge *</label>
+          <textarea id="topic" name="topic" required placeholder="Describe your business challenge..." rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="package">Package *</label>
+          <select id="package" name="package" required>
+            <option value="">Select a package</option>
+            <option value="standard">Standard - $49</option>
+            <option value="premium">Premium - $149</option>
+            <option value="enterprise">Enterprise - $499</option>
+          </select>
+        </div>
+
+        <button type="submit" id="submitBtn">Proceed to Payment</button>
+
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p>Creating your payment link...</p>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 CashMesh AI. All rights reserved.</p>
+      <p>Powered by AI Automation | Secure Payment via Stripe</p>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('paymentForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const loading = document.getElementById('loading');
+    const errorMsg = document.getElementById('errorMessage');
+    const successMsg = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Reset messages
+      errorMsg.style.display = 'none';
+      successMsg.style.display = 'none';
+
+      // Show loading
+      loading.style.display = 'block';
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch('/api/payment/create-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            customerName: document.getElementById('name').value,
+            customerEmail: document.getElementById('email').value,
+            topic: document.getElementById('topic').value,
+            packageType: document.getElementById('package').value,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+          throw new Error(data.error);
+        }
+
+        // Redirect to Stripe payment
+        window.location.href = data.paymentLink;
+      } catch (error) {
+        errorMsg.textContent = '❌ ' + error.message;
+        errorMsg.style.display = 'block';
+        loading.style.display = 'none';
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
