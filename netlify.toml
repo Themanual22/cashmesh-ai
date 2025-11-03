@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  functions = "server.js"
+  publish = "public"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
+[dev]
+  command = "npm run dev"
+  port = 3000
