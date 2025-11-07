@@ -42,9 +42,9 @@ app.post('/api/payment/create-link', async (req, res) => {
 
     // Price mapping
     const prices = {
-      standard: 'price_1SN2CVKLLm6GspecIyutiq8P',
-      premium: 'price_1SN2CVKLLm6GspecIyutiq8P',
-      enterprise: 'price_1SN2CVKLLm6GspecIyutiq8P',
+      standard: 'price_1SQe1IKLLm6GspecudcrQd7P',
+      premium: 'price_1SQe1IKLLm6GspecsKkkNycZ',
+      enterprise: 'price_1SQe1IKLLm6GspecTcvgrFgW',
     };
 
     const priceId = prices[packageType] || prices.standard;
